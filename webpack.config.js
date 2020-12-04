@@ -12,7 +12,8 @@ module.exports = {
         extensions: ['.js', '.jsx']
     },
     devServer: {
-        historyApiFallback: true
+        historyApiFallback: true,
+        hot: true
     },
     module: {
         rules: [{
