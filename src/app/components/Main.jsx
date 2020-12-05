@@ -1,14 +1,26 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { StylesProvider } from '@material-ui/core/styles';
 
+/***  Redux Config  ***/
 import { Provider } from 'react-redux';
 import { store } from '../store';
 
+
+/***  Components  ***/ 
 import { ConnectedDashboard } from './Dashboard';
+import { ConnectedNavigation } from './Navigation';
+import { LandingPage } from './LandingPage/LandingPage';
 
 export const Main = () => (
-    < Provider store={store} >
-        <div>
-            <ConnectedDashboard />
-        </div>
-    </Provider>
+    <Router >
+        < Provider store={store} >
+            <StylesProvider injectFirst >
+            
+                <LandingPage />
+                <Route exact path="/dashboard" render={ () => (<ConnectedDashboard/>)} />
+            
+            </StylesProvider>
+        </Provider>
+    </Router>
 )

@@ -1,0 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Nerko+One&display=swap");
+
+.label {
+  font-family: "Dancing Script", cursive;
+  font-size: 15px;
+  background-color: #ffef00;
+  color: #222;
+}
