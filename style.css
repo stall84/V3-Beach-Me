@@ -1,4 +1,15 @@
 body {
-  background-image: url("./beachPic5.jpg");
-  background-size: auto;
+  background-image: url("./beach-back-lg.jpg");
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+}
+
+@media only screen and (max-width: 520px) {
+  body {
+    background-image: url("./beach-back-sm.jpg");
+    background-size: cover;
+    height: 100vh;
+    background-position: center;
+  }
 }
