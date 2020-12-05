@@ -1,5 +1,5 @@
 body {
-  background-image: url("./beach-back-lg.jpg");
+  background-image: url("./images/beach-back-lg.jpg");
   background-size: cover;
   height: 100vh;
   background-position: center;
@@ -7,7 +7,7 @@ body {
 
 @media only screen and (max-width: 520px) {
   body {
-    background-image: url("./beach-back-sm.jpg");
+    background-image: url("./images/beach-back-sm.jpg");
     background-size: cover;
     height: 100vh;
     background-position: center;
