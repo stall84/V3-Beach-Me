@@ -1,22 +1,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Nerko+One&display=swap");
 
+/* :root {
+
+  
+} */
+
 .hero {
   background-image: url("../../images/beach-back-lg.jpg");
   background-size: cover;
-  height: 35vh;
+  height: 66vh;
   width: 100vw;
   background-position: center;
 }
 
 .logo h1 {
+  --logoShad-1: 1px 1px 1px rgba(0, 24, 88, 0.5),
+    1.5px 1.5px 1px rgba(0, 24, 88, 0.5);
+
   position: fixed;
   color: rgba(0, 24, 88, 1);
+  text-shadow: var(--logoShad-1);
   transition: all 0.6s ease-out;
 }
 
 .scrolling h1 {
+  --logoShad-2: 1px 1px 1px rgba(245, 130, 174, 0.5),
+    1.5px 1.5px 1px rgba(0, 0, 0, 0.05);
+
   position: fixed;
   color: rgba(0, 24, 88, 0.7);
+  text-shadow: var(--logoShad-2);
   transition: all 0.6s ease-out;
 }
 
@@ -32,5 +45,15 @@
 }
 
 .button {
-  background-color: rgb(160, 45, 45);
+  width: 12rem;
+  font-family: var(--bodyFont);
+  font-size: var(--h5);
+  background-color: var(--mauve-3);
+  color: var(--textColor);
+  transition: all 0.5s ease-in;
+}
+
+.button:hover {
+  transition: all 0.5s ease-in;
+  background-color: var(--mauve-1);
 }
