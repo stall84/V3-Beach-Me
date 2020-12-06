@@ -16,7 +16,9 @@ import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     grid_base: {
-        padding: '24px'
+        padding: '10rem 2.5rem',
+        display: 'flex',
+        justifyContent: 'center'
     }
 })
 
@@ -50,34 +52,27 @@ export const LandingPage = () => {
     }, [])
 
 
-    
-
     return (
     <React.Fragment>
         <Container maxWidth='xl' disableGutters='true' >
             <Grid container >
                 <div className={styles.hero}>
                     <header className={styles[scrollRef.current]}>
-                            <h1 >BEACH ME</h1>
+                            <h1 >BEACH ME </h1>
                     </header>
                 </div>
                 <Grid item xs={12} className={classes.grid_base} >
                     
                     
-                    <div className={styles.sec1}>
-                        <p>We're going to write a little test text out here to see what our nice Body-Font "Karla" looks like "in-the-wild".</p>
-                        <h2 className={styles.h2}>
-                            Font?
-                        </h2>
-                        <h3>
-                            Check
-                        </h3>
-                        <Button className={styles.button}> Fork </Button>
-                    </div>
+                    
+                        <Button className={styles.button} > GET BEACHED! </Button>
+                    
 
-                    <TestComp />
-            </Grid>
+                    
+                </Grid>
         </Grid>
+
+        <TestComp />
         </Container>
     </React.Fragment>
     )
