@@ -16,10 +16,14 @@ export const LandingPage = () => (
     <React.Fragment>
         <Container maxWidth='xl' >
             
-                <header >
+                <header>
                     <h1>BEACH ME</h1>
                 </header>
+                <div className={styles.hero}>
+
+                </div>
                 <div>
+                    <p>We're going to write a little test text out here to see what our nice Body-Font "Karla" looks like "in-the-wild".</p>
                     <h2 className={styles.h2}>
                         Font?
                     </h2>
