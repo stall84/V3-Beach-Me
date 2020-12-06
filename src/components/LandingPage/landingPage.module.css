@@ -3,9 +3,25 @@
 .hero {
   background-image: url("../../images/beach-back-lg.jpg");
   background-size: cover;
-  height: 33vh;
-  width: 95vw;
+  height: 35vh;
+  width: 100vw;
   background-position: center;
+}
+
+.logo h1 {
+  position: fixed;
+  color: rgba(0, 24, 88, 1);
+  transition: all 0.6s ease-out;
+}
+
+.scrolling h1 {
+  position: fixed;
+  color: rgba(0, 24, 88, 0.7);
+  transition: all 0.6s ease-out;
+}
+
+.sec1 {
+  margin-bottom: 650px;
 }
 
 .h2 {
