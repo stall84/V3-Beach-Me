@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Nerko+One&display=swap");
 
+.hero {
+  background-image: url("../../images/beach-back-lg.jpg");
+  background-size: cover;
+  height: 33vh;
+  width: 95vw;
+  background-position: center;
+}
+
 .h2 {
   font-family: "Nerko One", cursive;
   color: rgb(160, 45, 45);
