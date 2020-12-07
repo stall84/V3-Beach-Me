@@ -25,6 +25,7 @@
   --headingFont: "Rubik Mono One", sans-serif;
   --bodyFont: "Karla", sans-serif;
 
+  /* Using Perfect-Fourth Scaling */
   --baseFontSize: 112.5%;
   --baseFontWgt: 400;
   --h1: 4.209rem;
@@ -60,8 +61,6 @@ p {
   margin-bottom: 1rem;
   font-size: var(--h5);
 }
-
-/* Using Perfect-Fourth Scaling */
 
 h1,
 h2,

@@ -14,17 +14,11 @@ import Button from "@material-ui/core/Button";
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 
 
-const useStyles = makeStyles({
-    grid_base: {
-        padding: '10rem 2.5rem',
-        display: 'flex',
-        justifyContent: 'center'
-    }
-})
+
 
 
 export const LandingPage = () => {
-    const classes = useStyles();
+    
 
     
     
@@ -36,7 +30,7 @@ export const LandingPage = () => {
     
     useEffect(() => {
        const handleScroll = () => {
-           const show = window.scrollY > 100;
+           const show = window.scrollY > 6;
            if (show) {
                setScrollState('scrolling');
                
@@ -61,7 +55,7 @@ export const LandingPage = () => {
                             <h1 >BEACH ME </h1>
                     </header>
                 </div>
-                <Grid item xs={12} className={classes.grid_base} >
+                <Grid item xs={12} className={styles.grid_base} >
                     
                     
                     
