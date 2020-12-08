@@ -17,16 +17,27 @@ import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 
 
 
-export const LandingPage = () => {
-    
-
-    
+function LandingPage(props) {
     
     const [ scrollState, setScrollState ] = useState('logo')
+
+    const { addCoords } = props;
 
     const scrollRef = React.useRef();
     scrollRef.current = scrollState;
     
+    // Side-Effect to poll-for User's geolocation via the browswers navigator API
+    useEffect(() => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                console.log(position);
+                addCoords({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                })
+            })
+        }
+    }, [addCoords])
     
     useEffect(() => {
        const handleScroll = () => {
@@ -71,3 +82,13 @@ export const LandingPage = () => {
     </React.Fragment>
     )
 }
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addCoords: (payload) => {
+            return dispatch({ type: 'ADD_CORDS', payload });
+        }
+    }
+}
+
+export const ConnectedLandingPage = connect(null, mapDispatchToProps)(LandingPage);
