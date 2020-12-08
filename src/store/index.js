@@ -16,7 +16,7 @@ export const store = createStore(
 
         switch(action.type) {
             // First action receives navigator.geolocation's lat/lng values from landingpage initial load (or user-entered location)
-            case 'ADD_CORDS':
+            case 'ADD_COORDS':
                 return {
                     ...state,
                     latitude: action.payload.latitude,
