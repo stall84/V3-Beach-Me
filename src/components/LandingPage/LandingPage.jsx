@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-
+import axios from 'axios';
 import styles from './landingPage.module.css';
 
 import { TestComp } from '../TestComp/TestComp';
@@ -21,7 +21,8 @@ function LandingPage(props) {
     
     const [ scrollState, setScrollState ] = useState('logo')
 
-    const { addCoords } = props;
+    // destructuring out the addCoords and addSearchBeaches actions connected via react-redux connect passed in through props
+    const { addCoords, addSearchBeaches } = props;
 
     const scrollRef = React.useRef();
     scrollRef.current = scrollState;
@@ -31,13 +32,28 @@ function LandingPage(props) {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 console.log(position);
+                // Calling our redux dispatch action to store user's location
                 addCoords({
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude
                 })
+                axios
+                    .post('/api/v1/beaches', {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    })
+                    .then((response) => {
+                        console.log('Post Response from API: ', response);
+                        addSearchBeaches({
+                            searchBeaches: response.data.data
+                        });
+                    })
+                    .catch((error) => {
+                        console.error('Error in retrieving closest beaches: ', error);
+                    })
             })
         }
-    }, [addCoords])
+    }, [addCoords, addSearchBeaches])
     
     useEffect(() => {
        const handleScroll = () => {
@@ -87,6 +103,9 @@ function mapDispatchToProps(dispatch) {
     return {
         addCoords: (payload) => {
             return dispatch({ type: 'ADD_CORDS', payload });
+        },
+        addSearchBeaches: (payload) => {
+            return dispatch({ type: 'ADD_SEARCH_BEACHES', payload })
         }
     }
 }

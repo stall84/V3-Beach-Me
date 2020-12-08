@@ -22,6 +22,13 @@ export const store = createStore(
                     latitude: action.payload.latitude,
                     longitude: action.payload.longitude
                 }
+            case 'ADD_SEARCH_BEACHES':
+            // Add_Search_Beaches action stores an array of the closest beaches to the user as determined by our API using their previously stored lat/lng 
+            // and our Mongo database of beach locations (with a little mongo gelocation logic)   
+                return {
+                    ...state,
+                    searchBeaches: action.payload.searchBeaches
+                }    
                 default: 
                     return state;
                     
