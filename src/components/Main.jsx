@@ -11,13 +11,14 @@ import { store } from '../store';
 import { ConnectedDashboard } from './Dashboard';
 import { ConnectedNavigation } from './Navigation';
 import { LandingPage } from './LandingPage/LandingPage';
+import { ConnectedLandingPage } from './LandingPage/LandingPage';
 
 export const Main = () => (
     <Router >
         < Provider store={store} >
             <StylesProvider injectFirst >
             
-                <LandingPage />
+                <ConnectedLandingPage />
                 <Route exact path="/dashboard" render={ () => (<ConnectedDashboard/>)} />
             
             </StylesProvider>
