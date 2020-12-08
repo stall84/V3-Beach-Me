@@ -1,5 +1,5 @@
 .hero {
-  background-image: url("../../images/beach-back-lg.jpg");
+  background-image: url("../../images/anim_beach_1900.jpg");
   background-size: cover;
   height: 66vh;
   width: 100vw;
@@ -56,7 +56,7 @@
 
 @media only screen and (max-width: 520px) {
   .hero {
-    background-image: url("../../images/beach-back-sm.jpg");
+    background-image: url("../../images/anim_beach_mobile.jpeg");
     background-size: cover;
     height: 66vh;
     width: 100vw;
