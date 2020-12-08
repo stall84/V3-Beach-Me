@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import styles from './landingPage.module.css';
 
@@ -17,12 +17,15 @@ import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 
 
 
-function LandingPage(props) {
+export function LandingPage(props) {
     
     const [ scrollState, setScrollState ] = useState('logo')
 
     // destructuring out the addCoords and addSearchBeaches actions connected via react-redux connect passed in through props
     const { addCoords, addSearchBeaches } = props;
+
+    const dispatch = useDispatch();
+    
 
     const scrollRef = React.useRef();
     scrollRef.current = scrollState;
@@ -33,10 +36,16 @@ function LandingPage(props) {
             navigator.geolocation.getCurrentPosition((position) => {
                 console.log(position);
                 // Calling our redux dispatch action to store user's location
-                addCoords({
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude
-                })
+                // addCoords({
+                //     latitude: position.coords.latitude,
+                //     longitude: position.coords.longitude
+                // })
+                dispatch({
+                    type: 'ADD_COORDS', 
+                    payload: {
+                        latitude: position.coords.latitude, 
+                        longitude: position.coords.longitude}
+                    })
                 axios
                     .post('/api/v1/beaches', {
                         lat: position.coords.latitude,
@@ -44,8 +53,11 @@ function LandingPage(props) {
                     })
                     .then((response) => {
                         console.log('Post Response from API: ', response);
-                        addSearchBeaches({
-                            searchBeaches: response.data.data
+                        dispatch({ 
+                            type: 'ADD_SEARCH_BEACHES',
+                            payload: { 
+                                searchBeaches: response.data.data 
+                            }
                         });
                     })
                     .catch((error) => {
@@ -53,7 +65,7 @@ function LandingPage(props) {
                     })
             })
         }
-    }, [addCoords, addSearchBeaches])
+    }, [])
     
     useEffect(() => {
        const handleScroll = () => {
@@ -99,15 +111,17 @@ function LandingPage(props) {
     )
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        addCoords: (payload) => {
-            return dispatch({ type: 'ADD_CORDS', payload });
-        },
-        addSearchBeaches: (payload) => {
-            return dispatch({ type: 'ADD_SEARCH_BEACHES', payload })
-        }
-    }
-}
 
-export const ConnectedLandingPage = connect(null, mapDispatchToProps)(LandingPage);
+
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         addCoords: (payload) => {
+//             return dispatch({ type: 'ADD_CORDS', payload });
+//         },
+//         addSearchBeaches: (payload) => {
+//             return dispatch({ type: 'ADD_SEARCH_BEACHES', payload })
+//         }
+//     }
+// }
+
+// export const ConnectedLandingPage = connect(null, mapDispatchToProps)(LandingPage);

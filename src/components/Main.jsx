@@ -18,7 +18,8 @@ export const Main = () => (
         < Provider store={store} >
             <StylesProvider injectFirst >
             
-                <ConnectedLandingPage />
+                <LandingPage />
+                {/* <ConnectedLandingPage /> */}
                 <Route exact path="/dashboard" render={ () => (<ConnectedDashboard/>)} />
             
             </StylesProvider>
