@@ -1,0 +1,21 @@
+.base_style {
+  height: 10rem;
+  width: 15rem;
+  background-color: var(--mauve-2);
+  box-shadow: var(--level-2);
+  transition: all 0.9s ease-out;
+}
+
+.base_style:hover {
+  box-shadow: var(--level-4);
+  background-color: var(--teal-1);
+}
+
+a,
+a:visited,
+a:active,
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: (--textColor);
+}

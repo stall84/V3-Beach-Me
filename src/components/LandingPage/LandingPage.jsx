@@ -4,7 +4,7 @@ import axios from 'axios';
 import styles from './landingPage.module.css';
 
 import { TestComp } from '../TestComp/TestComp';
-
+import { DisplayTrip } from '../DisplayTrip/DisplayTrip';
 
 /***  Material UI Components ***/ 
 import Container from '@material-ui/core/Container';
@@ -25,7 +25,9 @@ export function LandingPage(props) {
     const { addCoords, addSearchBeaches } = props;
 
     const dispatch = useDispatch();
-    
+    const latitude = useSelector((state) => state.latitude);
+    const longitude = useSelector((state) => state.longitude);
+    const searchBeaches = useSelector((state) => state.searchBeaches);
 
     const scrollRef = React.useRef();
     scrollRef.current = scrollState;
@@ -35,11 +37,6 @@ export function LandingPage(props) {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 console.log(position);
-                // Calling our redux dispatch action to store user's location
-                // addCoords({
-                //     latitude: position.coords.latitude,
-                //     longitude: position.coords.longitude
-                // })
                 dispatch({
                     type: 'ADD_COORDS', 
                     payload: {
@@ -66,6 +63,29 @@ export function LandingPage(props) {
             })
         }
     }, [])
+
+    useEffect(() => {
+        if (longitude && searchBeaches) {
+
+            axios.post('/api/v1/get-trips', {
+                reduxLat: latitude,
+                reduxLng: longitude,
+                searchBeaches: searchBeaches
+            })
+            .then((response) => {
+                console.log('Response to GET-TRIPS Endpoint: ', response);
+                dispatch({
+                    type: 'ADD_BEACHES',
+                    payload: {
+                        beaches: response.data.data
+                    }
+                })
+            })
+            .catch((error) => {
+                console.error('Problem Posting to Get-Trips Endpoint: ', error);
+            })
+        }
+    }, [latitude, longitude, searchBeaches])
     
     useEffect(() => {
        const handleScroll = () => {
@@ -96,9 +116,9 @@ export function LandingPage(props) {
                 </div>
                 <Grid item xs={12} className={styles.grid_base} >
                     
-                    
-                    
-                        <Button className={styles.button} > GET BEACHED! </Button>
+
+                        <DisplayTrip />
+                        {/* <Button className={styles.button} > GET BEACHED! </Button> */}
                     
 
                     

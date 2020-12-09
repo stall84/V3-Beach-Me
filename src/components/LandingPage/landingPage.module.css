@@ -30,8 +30,9 @@
 
 .grid_base {
   display: flex;
-  padding: 5rem 2.5rem;
-  justify-content: center;
+  flex-direction: row;
+  padding: 7.5rem 2.5rem;
+  justify-content: space-evenly;
 }
 
 .sec1 {

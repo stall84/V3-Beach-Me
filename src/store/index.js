@@ -28,7 +28,12 @@ export const store = createStore(
                 return {
                     ...state,
                     searchBeaches: action.payload.searchBeaches
-                }    
+                }
+            case 'ADD_BEACHES':
+                return {
+                    ...state,
+                    beaches: action.payload.beaches
+                }        
                 default: 
                     return state;
                     
