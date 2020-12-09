@@ -90,7 +90,7 @@ export function LandingPage(props) {
     
     useEffect(() => {
        const handleScroll = () => {
-           const show = window.scrollY > 6;
+           const show = window.scrollY > 2;
            if (show) {
                setScrollState('scrolling');
                
@@ -115,16 +115,10 @@ export function LandingPage(props) {
                             <h1 >BEACH ME </h1>
                     </header>
                 </div>
-                <Grid xs={12} className={styles.grid_base} >
-                    
-                      
-                        <DisplayTrip />
-                        
-                                      
+                <Grid xs={12} className={styles.grid_base} >      
+                        <DisplayTrip />                                
                 </Grid>
         </Grid>
-
-        
         </Container>
     </React.Fragment>
     )

@@ -1,17 +1,24 @@
 .base_style {
   max-height: 12rem;
-  width: 17rem;
+  width: 18rem;
   display: flex;
+  text-align: center;
   flex-direction: column;
-  background-color: var(--sand-3);
+  align-items: center;
+  background-color: var(--sand-2a);
   box-shadow: var(--level-2);
   transition: all 0.65s ease-in-out;
 }
 
 .base_style:hover {
   box-shadow: var(--level-4);
-  background-color: var(--teal-2);
+  background-color: var(--sand-3);
   color: var(--sadle);
+}
+
+.card_container {
+  display: flex;
+  flex-direction: row;
 }
 
 a,
@@ -21,4 +28,27 @@ a:hover,
 a:focus {
   text-decoration: none;
   color: (--textColor);
+}
+
+/**  MEDIA QUERIES  **/
+
+@media only screen and (max-width: 1500px) {
+  .base_style,
+  h5,
+  p {
+    height: 9rem;
+    width: 8rem;
+    font-size: var(--small);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .base_style,
+  h5,
+  p {
+    margin-top: 0.5rem;
+    height: 8rem;
+    width: 7rem;
+    font-size: var(--small);
+  }
 }
