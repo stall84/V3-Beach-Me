@@ -5,6 +5,7 @@ import styles from './landingPage.module.css';
 
 import { TestComp } from '../TestComp/TestComp';
 import { DisplayTrip } from '../DisplayTrip/DisplayTrip';
+import { TripCards } from '../DisplayTrip/DisplayTrip';
 
 /***  Material UI Components ***/ 
 import Container from '@material-ui/core/Container';
@@ -114,14 +115,12 @@ export function LandingPage(props) {
                             <h1 >BEACH ME </h1>
                     </header>
                 </div>
-                <Grid item xs={12} className={styles.grid_base} >
+                <Grid xs={12} className={styles.grid_base} >
                     
-
+                      
                         <DisplayTrip />
-                        {/* <Button className={styles.button} > GET BEACHED! </Button> */}
-                    
-
-                    
+                        
+                                      
                 </Grid>
         </Grid>
 
