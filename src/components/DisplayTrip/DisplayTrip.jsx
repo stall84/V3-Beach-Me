@@ -17,9 +17,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
 const useStyles = makeStyles((theme) => ({
-    // root: {
-    //   maxWidth: 345,
-    // },
+    root: {
+      maxWidth: 345,
+    },
     // media: {
     //   height: 0,
     //   paddingTop: '56.25%', // 16:9
@@ -46,14 +46,14 @@ const useStyles = makeStyles((theme) => ({
         const beachFive = useSelector((state) => state.beaches);
 
         const classes = useStyles();
-        const [expanded, setExpanded] = React.useState(false);
+        const [expanded, setExpanded] = useState(false);
 
-        const handleExpandClick = () => {
+        const handleExpandClick = (i) => {
             setExpanded(!expanded);
         };
 
         return (
-            <Card className={styles.base_style}>
+            <Card className={classes.root} key={props.key}>
             <CardHeader  title={props.trip.name} />
 
             <CardContent>
@@ -76,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
             <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
                 <p>TEST AREA FOR WEATHER</p>
+                <p>MORE TEST AREA</p>
             </CardContent>
             </Collapse>
             </Card>

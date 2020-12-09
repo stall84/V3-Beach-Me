@@ -125,7 +125,7 @@ export function LandingPage(props) {
                 </Grid>
         </Grid>
 
-        <TestComp />
+        
         </Container>
     </React.Fragment>
     )

@@ -1,10 +1,12 @@
-.base_style {
-  height: 14rem;
+/* .base_style {
+  max-height: 12rem;
   width: 17rem;
+  display: block;
+  flex-direction: column;
   background-color: var(--mauve-2);
   box-shadow: var(--level-2);
   transition: all 0.65s ease-in-out;
-}
+} */
 
 .base_style:hover {
   box-shadow: var(--level-4);

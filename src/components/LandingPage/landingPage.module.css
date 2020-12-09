@@ -31,7 +31,8 @@
 .grid_base {
   display: flex;
   flex-direction: row;
-  padding: 7.5rem 2.5rem;
+  max-height: 600px;
+  padding: 2.5rem;
   justify-content: space-evenly;
 }
 
