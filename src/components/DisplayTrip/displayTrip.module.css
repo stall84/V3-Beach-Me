@@ -1,14 +1,15 @@
 .base_style {
-  height: 10rem;
-  width: 15rem;
+  height: 14rem;
+  width: 17rem;
   background-color: var(--mauve-2);
   box-shadow: var(--level-2);
-  transition: all 0.9s ease-out;
+  transition: all 0.65s ease-in-out;
 }
 
 .base_style:hover {
   box-shadow: var(--level-4);
-  background-color: var(--teal-1);
+  background-color: var(--teal-2);
+  color: var(--sadle);
 }
 
 a,
