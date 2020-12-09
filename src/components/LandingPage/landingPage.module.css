@@ -55,12 +55,18 @@
 
 /***  Media Queries  ***/
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 600px) {
   .hero {
     background-image: url("../../images/anim_beach_mobile.jpeg");
     background-size: cover;
-    height: 66vh;
+    height: 33vh;
     width: 100vw;
     background-position: center;
+  }
+  .grid_base {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
   }
 }
