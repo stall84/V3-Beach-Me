@@ -1,6 +1,7 @@
 .base_style {
   max-height: fit-content;
   width: 18rem;
+  padding-bottom: 0.7rem;
   display: flex;
   text-align: center;
   flex-direction: column;
@@ -8,6 +9,17 @@
   background-color: var(--sand-2a);
   box-shadow: var(--level-2);
   transition: all 0.65s ease-in-out;
+}
+
+.base_style h5:first-child {
+  padding: 1.5rem 2rem;
+}
+
+.base_style h5:nth-child(2) {
+  font-size: 100%;
+  padding: 0 1rem;
+  align-content: center;
+  align-items: center;
 }
 
 .base_style:hover {
@@ -34,21 +46,29 @@ a:focus {
 
 @media only screen and (max-width: 1500px) {
   .base_style,
-  h5,
-  p {
-    height: 9rem;
-    width: 8rem;
+  h5 {
+    padding: 0.25rem 0.8rem;
+    max-height: fit-content;
+    max-width: fit-content;
+    font-size: var(--small);
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .base_style,
+  h5 {
+    padding: 0 0;
+    max-height: fit-content;
+    max-width: fit-content;
     font-size: var(--small);
   }
 }
 
 @media only screen and (max-width: 600px) {
   .base_style,
-  h5,
-  p {
-    margin-top: 0.5rem;
-    height: 8rem;
-    width: 7rem;
+  h5 {
+    max-height: fit-content;
+    max-width: fit-content;
     font-size: var(--small);
   }
 }

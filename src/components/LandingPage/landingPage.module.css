@@ -63,10 +63,11 @@
     width: 100vw;
     background-position: center;
   }
+
   .grid_base {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
-    align-items: baseline;
   }
 }
