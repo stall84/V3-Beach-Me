@@ -1,5 +1,5 @@
 .base_style {
-  max-height: 12rem;
+  max-height: fit-content;
   width: 18rem;
   display: flex;
   text-align: center;
@@ -18,7 +18,7 @@
 
 .card_container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 a,
