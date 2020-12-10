@@ -1,0 +1,16 @@
+.forecast_main {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+}
+
+.forecast_main h5 {
+  margin-bottom: 0px;
+  color: red;
+  position: sticky;
+  top: 0px;
+}
+
+.weather_block {
+  background-color: var(--teal-1);
+}

@@ -25,14 +25,14 @@ import Grid from '@material-ui/core/Grid';
         return (
                      
                 
-                <div className={styles.base_style} key={props.trip.id}>
+                <div  key={props.trip.id}>
                 <a className={styles.anchor_tag} target='_blank' rel='noopener noreferrer' href={`https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${props.trip.name}&travelmode=driving`}>
                 <h5 >{props.trip.name}</h5> 
-                <p>
                 
-                    {timeConverter(props.trip.dur)}
                 
-                </p>
+                   <h5> {timeConverter(props.trip.dur)} </h5>
+                
+                
                 </a>
                 
                 </div>  
@@ -71,9 +71,9 @@ export function DisplayTrip (props) {
 
     return beachFive.map((trip, i) => {
     return (
-            <Grid className={styles.card_container}>
+            <Grid className={styles.base_style}>
             <TripCards key={i} id={i} trip={trip}/>
-            <ForecastBar key={i}/>
+            <ForecastBar key={i} id={i} trip={trip}/>
             </Grid>
     )
 
