@@ -12,7 +12,7 @@
 }
 
 .base_style h5:first-child {
-  padding: 1.5rem 2rem;
+  padding: 0.5rem 2rem;
 }
 
 .base_style h5:nth-child(2) {
@@ -60,6 +60,7 @@ a:focus {
     padding: 0 0;
     max-height: fit-content;
     max-width: fit-content;
+    margin-bottom: 1rem;
     font-size: var(--small);
   }
 }
@@ -69,6 +70,7 @@ a:focus {
   h5 {
     max-height: fit-content;
     max-width: fit-content;
+    margin-bottom: 1rem;
     font-size: var(--small);
   }
 }

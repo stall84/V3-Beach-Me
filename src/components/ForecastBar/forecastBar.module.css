@@ -1,16 +1,38 @@
 .forecast_main {
   display: flex;
-  flex-direction: column;
-  color: inherit;
-}
-
-.forecast_main h5 {
-  margin-bottom: 0px;
-  color: red;
-  position: sticky;
-  top: 0px;
+  flex-direction: row;
 }
 
 .weather_block {
-  background-color: var(--teal-1);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  grid-auto-rows: auto;
+  transition: all 0.5s ease-out;
+}
+
+.weather_block img {
+  width: 70px;
+  height: 70px;
+}
+
+.weather_div {
+  max-width: 75px;
+  padding: 0.4rem;
+  background-color: rgba(139, 211, 221, 0.6);
+  border: 0.2px solid var(--crete);
+}
+
+.weather_div:hover {
+  --hoverShad: -0.8px -0.8px 0 rgba(101, 135, 54, 0.3),
+    0.8px 0.8px 0 rgba(101, 135, 54, 0.3);
+  box-shadow: var(--hoverShad);
+}
+
+.day_span {
+  color: var(--sadle);
+}
+
+.wx_span {
+  color: var(--brown-1);
 }
