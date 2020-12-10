@@ -87,6 +87,19 @@ export function LandingPage(props) {
             })
         }
     }, [latitude, longitude, searchBeaches])
+
+    // Querying Javascript Date API to get the current user's local day of the week to be used in weather
+    // rendering later in app. Dispatching it to Redux store.
+    var today = new Date();
+    var day = today.getDay();
+    useEffect(() => {
+        dispatch({
+            type: 'ADD_DATE',
+            payload: {
+                day: day
+            }
+        })
+    }, [today])
     
     useEffect(() => {
        const handleScroll = () => {
@@ -112,7 +125,9 @@ export function LandingPage(props) {
             <Grid container >
                 <div className={styles.hero}>
                     <header className={styles[scrollRef.current]}>
+                        <a href="#">
                             <h1 >BEACH ME </h1>
+                        </a>
                     </header>
                 </div>
                 <Grid xs={12} className={styles.grid_base} >      
