@@ -8,7 +8,8 @@ const defaultState = {
     latitude: null,
     longitude: null,
     searchBeaches: null,
-    beaches: null
+    beaches: null,
+    forecasts: null
 }
 
 export const store = createStore(
@@ -33,7 +34,12 @@ export const store = createStore(
                 return {
                     ...state,
                     beaches: action.payload.beaches
-                }        
+                }
+            case 'ADD_FORECASTS':
+                return {
+                    ...state,
+                    forecasts: action.payload.forecasts
+                }            
                 default: 
                     return state;
                     
