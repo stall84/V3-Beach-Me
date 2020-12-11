@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import Loader from 'react-loader-spinner';
+
 import { ForecastBar } from '../ForecastBar/ForecastBar';
 import { timeConverter } from '../../utilities/utilities';
 import styles from './displayTrip.module.css';
@@ -19,22 +22,25 @@ import Grid from '@material-ui/core/Grid';
 
     
         if (beachFive === null) {
-            return <h2>JUST A MOMENT WHILE WE LOAD YOUR BEACHES ;)</h2>;
+            return ( 
+                <div> 
+                    <Loader
+                        type="Puff"
+                        color="#00BFFF"
+                        height={120}
+                        width={120}
+                        timeout={4000}                
+                    />
+                </div>
+                )
         }
        
         return (
-                     
-                
-                <div  key={props.trip.id}>
-                <a className={styles.anchor_tag} target='_blank' rel='noopener noreferrer' href={`https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${props.trip.name}&travelmode=driving`}>
-                <h5 >{props.trip.name}</h5> 
-                
-                
-                   <h5> {timeConverter(props.trip.dur)} </h5>
-                
-                
-                </a>
-                
+                <div className={styles.card_top} key={props.trip.id}>
+                    <a className={styles.anchor_tag} target='_blank' rel='noopener noreferrer' href={`https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${props.trip.name}&travelmode=driving`}>
+                        <h5 >{props.trip.name}</h5> 
+                        <h5> {timeConverter(props.trip.dur)} </h5>     
+                    </a>
                 </div>  
                 
         )
@@ -61,19 +67,30 @@ export function DisplayTrip (props) {
                         }
                     })
                 })
-                .catch(error => console.log('There was an error retrieving weather: ', error))  
+                .catch(error => console.error('There was an error retrieving weather: ', error))  
         }
     }, [beachFive])
     
     if (beachFive === null) {
-        return <h2>JUST A MOMENT WHILE WE LOAD YOUR BEACHES ;)</h2>;
+        return ( 
+            <div className={styles.loader_div}> 
+                <Loader
+                    type="Watch"
+                    color="#001858"
+                    height={200}
+                    width={200}
+                    timeout={4000}                
+                />
+                <h3>Just a moment while we load your nearest beaches...</h3>
+            </div>
+            )
     }
 
     return beachFive.map((trip, i) => {
     return (
             <Grid className={styles.base_style}>
-            <TripCards key={i} id={i} trip={trip}/>
-            <ForecastBar key={i} id={i} trip={trip}/>
+                <TripCards key={i} id={i} trip={trip}/>
+                <ForecastBar key={i} id={i} trip={trip}/>
             </Grid>
     )
 

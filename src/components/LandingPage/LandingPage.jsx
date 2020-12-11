@@ -10,11 +10,8 @@ import { TripCards } from '../DisplayTrip/DisplayTrip';
 /***  Material UI Components ***/ 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Button from "@material-ui/core/Button";
-import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
-
-
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 
 
 
@@ -22,8 +19,6 @@ export function LandingPage(props) {
     
     const [ scrollState, setScrollState ] = useState('logo')
 
-    // destructuring out the addCoords and addSearchBeaches actions connected via react-redux connect passed in through props
-    const { addCoords, addSearchBeaches } = props;
 
     const dispatch = useDispatch();
     const latitude = useSelector((state) => state.latitude);
@@ -32,6 +27,8 @@ export function LandingPage(props) {
 
     const scrollRef = React.useRef();
     scrollRef.current = scrollState;
+
+
     
     // Side-Effect to poll-for User's geolocation via the browswers navigator API
     useEffect(() => {
@@ -118,8 +115,10 @@ export function LandingPage(props) {
        }
     }, [])
 
+ 
 
     return (
+
     <React.Fragment>
         <Container maxWidth='xl' disableGutters='true' >
             <Grid container >
@@ -130,6 +129,12 @@ export function LandingPage(props) {
                         </a>
                     </header>
                 </div>
+                <Grid xs={12} className={styles.input_div}>
+                    <form>
+                      <label for='location'>Where you wanna escape?</label>
+                      <input type='search' id='location' name='location' placeholder='ex: Atlanta, GA or 30306' />
+                    </form>
+                </Grid>
                 <Grid xs={12} className={styles.grid_base} >      
                         <DisplayTrip />                                
                 </Grid>
@@ -139,17 +144,3 @@ export function LandingPage(props) {
     )
 }
 
-
-
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         addCoords: (payload) => {
-//             return dispatch({ type: 'ADD_CORDS', payload });
-//         },
-//         addSearchBeaches: (payload) => {
-//             return dispatch({ type: 'ADD_SEARCH_BEACHES', payload })
-//         }
-//     }
-// }
-
-// export const ConnectedLandingPage = connect(null, mapDispatchToProps)(LandingPage);
