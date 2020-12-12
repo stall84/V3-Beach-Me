@@ -1,8 +1,12 @@
+/*** Third Party Components/Libraries  ***/
 import React, { useState, useEffect } from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
-import styles from './landingPage.module.css';
+import Geocode from 'react-geocode';
 
+
+/***  Beach-Me Style and Custom Components ***/
+import styles from './landingPage.module.css';
 import { TestComp } from '../TestComp/TestComp';
 import { DisplayTrip } from '../DisplayTrip/DisplayTrip';
 import { TripCards } from '../DisplayTrip/DisplayTrip';
@@ -10,15 +14,14 @@ import { TripCards } from '../DisplayTrip/DisplayTrip';
 /***  Material UI Components ***/ 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
+
 
 
 
 export function LandingPage(props) {
     
     const [ scrollState, setScrollState ] = useState('logo')
-
+    const [ anonLocation, setAnonLocation ] = useState(null);
 
     const dispatch = useDispatch();
     const latitude = useSelector((state) => state.latitude);
@@ -27,14 +30,50 @@ export function LandingPage(props) {
 
     const scrollRef = React.useRef();
     scrollRef.current = scrollState;
+    
+    
 
+    const geocode = (event) => {
+        event.preventDefault();
+        Geocode.setApiKey(process.env.GOOGLE_API_KEY);
+        Geocode.setLanguage('en');
 
+        Geocode.fromAddress(anonLocation)
+        .then((response) => {
+            let { lat, lng } = response.results[0].geometry.location;
+            console.log('Geocoder position: ', lat,lng);
+            dispatch({
+                type: 'ADD_COORDS',
+                payload: {
+                    latitude: lat,
+                    longitude: lng
+                }
+            })
+            axios
+                .post('/api/v1/beaches', {
+                    lat: lat,
+                    lng: lng
+                })
+                .then((response) => {
+                    console.log('Post Response from API: ', response);
+                    dispatch({ 
+                        type: 'ADD_SEARCH_BEACHES',
+                        payload: { 
+                            searchBeaches: response.data.data 
+                        }
+                    });
+                })
+        })
+        .catch((error) => {
+            console.error('Error computing/retrieving geolocation: ', error);
+        })
+    }
     
     // Side-Effect to poll-for User's geolocation via the browswers navigator API
     useEffect(() => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                console.log(position);
+                console.log('Navigator position: ', position);
                 dispatch({
                     type: 'ADD_COORDS', 
                     payload: {
@@ -59,7 +98,7 @@ export function LandingPage(props) {
                         console.error('Error in retrieving closest beaches: ', error);
                     })
             })
-        }
+        } 
     }, [])
 
     useEffect(() => {
@@ -88,8 +127,8 @@ export function LandingPage(props) {
     // Querying Javascript Date API to get the current user's local day of the week to be used in weather
     // rendering later in app. Dispatching it to Redux store.
     var today = new Date();
-    var day = today.getDay();
     useEffect(() => {
+        var day = today.getDay();
         dispatch({
             type: 'ADD_DATE',
             payload: {
@@ -130,10 +169,14 @@ export function LandingPage(props) {
                     </header>
                 </div>
                 <Grid xs={12} className={styles.input_div}>
-                    <form>
-                      <label for='location'>Where are you?</label>
-                      <input type='search' id='location' name='location' placeholder='ex: Atlanta, GA or 30306' />
+                    <form onSubmit={geocode} >
+                      <label htmlFor='location'>Where are you?</label>
+                      <input type='search'
+                             id='location' 
+                             placeholder='ex: Atlanta, GA or 30306' 
+                             onChange={input => setAnonLocation(input.target.value)} />
                     </form>
+                    <div><h5></h5></div>
                 </Grid>
                 <Grid xs={12} className={styles.grid_base} >      
                         <DisplayTrip />                                

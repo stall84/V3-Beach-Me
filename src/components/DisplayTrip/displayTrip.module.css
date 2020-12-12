@@ -40,6 +40,7 @@
 }
 
 .card_top {
+  height: 134px;
   max-width: max-content;
   display: flex;
   flex-direction: column;
@@ -73,6 +74,9 @@ a:focus {
     font-size: 90%;
     padding: 0.5rem 0.5rem;
   }
+  .card_top {
+    max-height: max-content;
+  }
 }
 
 @media only screen and (max-width: 1100px) {
@@ -88,6 +92,9 @@ a:focus {
     font-size: 85%;
     padding: 0.5rem 0.5rem;
   }
+  .card_top {
+    height: max-content;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -101,6 +108,10 @@ a:focus {
   .base_style h5:nth-child(2) {
     font-size: 75%;
     padding: 0.5rem 0.5rem;
+  }
+
+  .card_top {
+    height: max-content;
   }
 
   .loader_div h3 {
