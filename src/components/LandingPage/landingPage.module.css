@@ -57,7 +57,7 @@ input {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 1.75rem;
+  padding: 0 1.75rem;
 }
 
 .sec1 {
@@ -78,12 +78,24 @@ input {
   background-color: var(--mauve-2);
 }
 
+.footer {
+  margin-top: 1rem;
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+  bottom: 0;
+  text-align: center;
+}
+
 /***  Media Queries  ***/
 
 @media only screen and (max-width: 900px) {
   .grid_base {
     flex-direction: column;
     align-items: center;
+    padding: 0;
+  }
+  p {
+    font-size: 90%;
   }
 }
 
@@ -102,5 +114,15 @@ input {
     flex-wrap: nowrap;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 0;
+  }
+
+  p {
+    font-size: 80%;
+    margin-bottom: 0.25rem;
+  }
+
+  .footer h5 {
+    font-size: 75%;
   }
 }

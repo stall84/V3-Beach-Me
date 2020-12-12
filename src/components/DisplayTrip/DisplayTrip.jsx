@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
@@ -12,14 +12,11 @@ import styles from './displayTrip.module.css';
 import Grid from '@material-ui/core/Grid';
 
 
-
-
-
  function TripCards(props) {
         const latitude = useSelector((state) => state.latitude);
         const longitude = useSelector((state) => state.longitude);
         const beachFive = useSelector((state) => state.beaches);
-
+        
     
         if (beachFive === null) {
             return ( 
@@ -31,13 +28,14 @@ import Grid from '@material-ui/core/Grid';
                         width={120}
                         timeout={4000}                
                     />
+                    
                 </div>
                 )
         }
        
         return (
                 <div className={styles.card_top} key={props.trip.id}>
-                    <a className={styles.anchor_tag} target='_blank' rel='noopener noreferrer' href={`https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${props.trip.name}&travelmode=driving`}>
+                    <a className={styles.anchor_tag} href={`https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${props.trip.name}&travelmode=driving`}>
                         <h5 >{props.trip.name}</h5> 
                         <h5> {timeConverter(props.trip.dur)} </h5>     
                     </a>
@@ -47,12 +45,13 @@ import Grid from '@material-ui/core/Grid';
     }
 
 
-
 export function DisplayTrip (props) {
 
     const beachFive = useSelector((state) => state.beaches);
+    const forecasts = useSelector((state) => state.forecasts);
     const dispatch = useDispatch();
 
+    
     useEffect(() => {
         if (beachFive != null) {
             axios.post('/api/v1/get-weather', {
@@ -70,6 +69,12 @@ export function DisplayTrip (props) {
                 .catch(error => console.error('There was an error retrieving weather: ', error))  
         }
     }, [beachFive])
+
+    useEffect(() => {
+        if (forecasts != null) {
+        document.getElementById('tripCardsMain').focus();
+    }
+    }, [forecasts])
     
     if (beachFive === null) {
         return ( 
@@ -81,21 +86,17 @@ export function DisplayTrip (props) {
                     width={200}
                     timeout={4000}                
                 />
-                <p>Do you have location services enabled?  If not, fear not! Just enter your City, State combination or zip-code above for 'anonymous' beaching.
-                    This is a React app, so I want to give your Props for being so 'off-the-grid'.
-                </p>
+                <h5>Enter Your Location Above</h5>
             </div>
             )
     }
 
     return beachFive.map((trip, i) => {
     return (
-            <Grid className={styles.base_style}>
+            <Grid className={styles.base_style} key={i + 'grid'} tabIndex='0' id='tripCardsMain' >
                 <TripCards key={i} id={i} trip={trip}/>
-                <ForecastBar key={i} id={i} trip={trip}/>
+                <ForecastBar key={i + 'a'} id={i} trip={trip}/>
             </Grid>
     )
-
-
 })
 }
