@@ -18,6 +18,7 @@ module.exports = {
             '/api': 'http://localhost:5005'
         }
     },
+    watch: true,
     module: {
         rules: [
             {

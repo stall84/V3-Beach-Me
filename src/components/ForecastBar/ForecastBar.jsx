@@ -23,7 +23,7 @@ export function ForecastBar (props) {
 
         <div className={styles.forecast_main}>
             
-            <a href={`${url}/${forecasts[props.id].city.id}`}>
+            <a href={`${url}${forecasts[props.id].city.id}`}>
             <div className={styles.weather_block}>
                              
                 <div className={styles.weather_div}><span className={styles.day_span}>{days[0]}</span>

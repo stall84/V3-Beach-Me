@@ -36,3 +36,14 @@
 .wx_span {
   color: var(--brown-1);
 }
+
+@media only screen and (max-width: 1550px) {
+  .forecat_main,
+  .weather_block {
+    max-width: inherit;
+  }
+  .weather_block img {
+    width: 55px;
+    height: 55px;
+  }
+}
