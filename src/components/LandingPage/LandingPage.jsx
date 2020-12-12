@@ -1,20 +1,18 @@
 /*** Third Party Components/Libraries  ***/
-import React, { useState, useEffect } from 'react';
-import { connect, useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import Geocode from 'react-geocode';
 
 
 /***  Beach-Me Style and Custom Components ***/
 import styles from './landingPage.module.css';
-import { TestComp } from '../TestComp/TestComp';
 import { DisplayTrip } from '../DisplayTrip/DisplayTrip';
-import { TripCards } from '../DisplayTrip/DisplayTrip';
+
 
 /***  Material UI Components ***/ 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-
 
 
 
@@ -27,10 +25,10 @@ export function LandingPage(props) {
     const latitude = useSelector((state) => state.latitude);
     const longitude = useSelector((state) => state.longitude);
     const searchBeaches = useSelector((state) => state.searchBeaches);
+    
 
     const scrollRef = React.useRef();
     scrollRef.current = scrollState;
-    
     
 
     const geocode = (event) => {
@@ -154,12 +152,11 @@ export function LandingPage(props) {
        }
     }, [])
 
- 
 
     return (
 
     <React.Fragment>
-        <Container maxWidth='xl' disableGutters='true' >
+        <Container maxWidth='xl' disableGutters={true} >
             <Grid container >
                 <div className={styles.hero}>
                     <header className={styles[scrollRef.current]}>
@@ -168,7 +165,7 @@ export function LandingPage(props) {
                         </a>
                     </header>
                 </div>
-                <Grid xs={12} className={styles.input_div}>
+                <Grid item xs={12} className={styles.input_div}>
                     <form onSubmit={geocode} >
                       <label htmlFor='location'>Where are you?</label>
                       <input type='search'
@@ -176,12 +173,24 @@ export function LandingPage(props) {
                              placeholder='ex: Atlanta, GA or 30306' 
                              onChange={input => setAnonLocation(input.target.value)} />
                     </form>
-                    <div><h5></h5></div>
+                    <div>
+                        <p>After your location is attained, The 5 closest beaches to you will be rendered below.<br/>
+                             The beach name and driving-time can be clicked to take you to the quickest route via Google Maps<br/>
+                             The weather forecasts for the next 3 days is also clickable to be taken to a detailed forecast
+                        </p>
+                    </div>
                 </Grid>
                 <Grid xs={12} className={styles.grid_base} >      
                         <DisplayTrip />                                
                 </Grid>
         </Grid>
+        <footer className={styles.footer}>
+        <div>
+            <a target='_blank' href='https://github.com/stall84'>
+                <h5>&copy; 2020 Michael Stallings</h5>
+            </a>
+        </div>
+        </footer>
         </Container>
     </React.Fragment>
     )
