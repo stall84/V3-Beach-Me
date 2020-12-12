@@ -23,11 +23,13 @@
 
 .base_style h5:first-child {
   padding: 0.5rem 2rem;
+  margin-top: 0.7rem;
 }
 
 .base_style h5:nth-child(2) {
+  color: var(--red1);
   font-size: 100%;
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
   margin: 0 auto;
 }
 
@@ -38,6 +40,7 @@
 }
 
 .card_top {
+  max-width: max-content;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -67,31 +70,39 @@ a:focus {
 
   .base_style h5:first-child,
   .base_style h5:nth-child(2) {
-    font-size: var(--small);
+    font-size: 90%;
     padding: 0.5rem 0.5rem;
   }
 }
 
 @media only screen and (max-width: 1100px) {
-  .base_style,
-  h5 {
+  .base_style {
     flex-wrap: wrap;
-    padding: 0 0;
+    padding-bottom: 0.7rem;
     max-height: fit-content;
-    max-width: fit-content;
+    max-width: max-content;
     margin-bottom: 1rem;
-    font-size: var(--small);
+  }
+  .base_style h5:first-child,
+  .base_style h5:nth-child(2) {
+    font-size: 85%;
+    padding: 0.5rem 0.5rem;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .base_style,
-  h5 {
+  .base_style {
     max-height: fit-content;
-    max-width: fit-content;
+    max-width: max-content;
     margin-bottom: 1rem;
-    font-size: var(--small);
   }
+
+  .base_style h5:first-child,
+  .base_style h5:nth-child(2) {
+    font-size: 75%;
+    padding: 0.5rem 0.5rem;
+  }
+
   .loader_div h3 {
     display: none;
   }

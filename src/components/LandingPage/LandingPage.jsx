@@ -131,7 +131,7 @@ export function LandingPage(props) {
                 </div>
                 <Grid xs={12} className={styles.input_div}>
                     <form>
-                      <label for='location'>Where you wanna escape?</label>
+                      <label for='location'>Where are you?</label>
                       <input type='search' id='location' name='location' placeholder='ex: Atlanta, GA or 30306' />
                     </form>
                 </Grid>
