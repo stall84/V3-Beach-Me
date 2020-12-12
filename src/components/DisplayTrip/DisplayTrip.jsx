@@ -81,7 +81,9 @@ export function DisplayTrip (props) {
                     width={200}
                     timeout={4000}                
                 />
-                <h3>Just a moment while we load your nearest beaches...</h3>
+                <p>Do you have location services enabled?  If not, fear not! Just enter your City, State combination or zip-code above for 'anonymous' beaching.
+                    This is a React app, so I want to give your Props for being so 'off-the-grid'.
+                </p>
             </div>
             )
     }
