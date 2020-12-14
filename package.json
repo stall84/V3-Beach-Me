@@ -7,7 +7,7 @@
     "devNoServer": "webpack --d --watch",
     "start": "webpack",
     "dev": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "node ./scripts/create-env.js && webpack --config webpack.prod.js"
   },
   "author": "Michael E Stallings",
   "license": "ISC",
