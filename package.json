@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "redesign of original Beach-Me Front-End ",
   "main": "index.js",
-  "homepage": ".",
   "scripts": {
     "devNoServer": "webpack --d --watch",
     "start": "webpack",

@@ -54,7 +54,7 @@ export function DisplayTrip (props) {
     
     useEffect(() => {
         if (beachFive != null) {
-            axios.post('/api/v1/get-weather', {
+            axios.post('https://mes-personal-site.herokuapp.com/api/v1/get-weather', {
                 fiveBeaches: beachFive
             })
                 .then(response => {

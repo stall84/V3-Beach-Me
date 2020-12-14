@@ -30,7 +30,8 @@ export function LandingPage(props) {
     const scrollRef = React.useRef();
     scrollRef.current = scrollState;
     
-
+/***  Geocode will operate if the client or client's browser refuse automatic location finding.  Lat/Lng will be pulled from the response, added to Redux store
+      and then sent to our backend to populate nearest beaches  ***/ 
     const geocode = (event) => {
         event.preventDefault();
         Geocode.setApiKey(process.env.GOOGLE_API_KEY);
@@ -48,7 +49,7 @@ export function LandingPage(props) {
                 }
             })
             axios
-                .post('/api/v1/beaches', {
+                .post('https://mes-personal-site.herokuapp.com/api/v1/beaches', {
                     lat: lat,
                     lng: lng
                 })
@@ -67,7 +68,8 @@ export function LandingPage(props) {
         })
     }
     
-    // Side-Effect to poll-for User's geolocation via the browswers navigator API
+    /* Poll-for User's geolocation via the browswers navigator API (If allowed by user), Add those coordinates to Redux store, then send them to the backend for closest beach
+        population */
     useEffect(() => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
@@ -79,7 +81,7 @@ export function LandingPage(props) {
                         longitude: position.coords.longitude}
                     })
                 axios
-                    .post('/api/v1/beaches', {
+                    .post('https://mes-personal-site.herokuapp.com/api/v1/beaches', {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     })
@@ -99,10 +101,12 @@ export function LandingPage(props) {
         } 
     }, [])
 
+    /***  After client's location is determined and stored, AND after the large-list of closest beaches by straight-line-distance is obtained from our backend.  Send request to 
+          backend to do the logic/math of finding the 5 closest beaches by driving time (Google Distance Matrix)  ***/ 
     useEffect(() => {
         if (longitude && searchBeaches) {
 
-            axios.post('/api/v1/get-trips', {
+            axios.post('https://mes-personal-site.herokuapp.com/api/v1/get-trips', {
                 reduxLat: latitude,
                 reduxLng: longitude,
                 searchBeaches: searchBeaches
@@ -135,6 +139,7 @@ export function LandingPage(props) {
         })
     }, [today])
     
+    //  Logo animation 
     useEffect(() => {
        const handleScroll = () => {
            const show = window.scrollY > 2;
