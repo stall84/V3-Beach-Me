@@ -27,9 +27,6 @@ module.exports = {
             template: './src/template.html'
         }),
         new MiniCssExtractPlugin(),
-        new webpack.DefinePlugin({
-            'process.env.GOOGLE_API_KEY': JSON.stringify(process.env.GOOGLE_API_KEY)
-        }),
         new CleanWebpackPlugin(),
         // {
         //     apply(compiler) {
