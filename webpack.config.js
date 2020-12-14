@@ -6,7 +6,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { webpack } = require('webpack');
 
 
-var BUILD_DIR = path.resolve(__dirname, 'dist');
 var APP_DIR = path.resolve(__dirname, 'src');
 
 const VENDOR_LIBS = [
@@ -28,6 +27,7 @@ module.exports = {
         }),
         new MiniCssExtractPlugin(),
         new CleanWebpackPlugin(),
+        new Dotenv(),
         // {
         //     apply(compiler) {
         //         compiler.hooks.beforeRun.tapAsync('CustomBeforeRunPlugin', function (compiler, callback) {

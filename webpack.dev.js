@@ -4,6 +4,8 @@ const { merge } = require('webpack-merge');
 
 
 
+
+
 module.exports = merge(common, {
     mode: "development",
     output: {
@@ -11,9 +13,6 @@ module.exports = merge(common, {
         filename: '[name].bundle.js',
         publicPath: '/'
     },
-    plugins: [
-        new Dotenv(),
-    ],
     devServer: {
         historyApiFallback: true,
         hot: true,
