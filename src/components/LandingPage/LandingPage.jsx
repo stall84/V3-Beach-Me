@@ -34,7 +34,7 @@ export function LandingPage(props) {
       and then sent to our backend to populate nearest beaches  ***/ 
     const geocode = (event) => {
         event.preventDefault();
-        Geocode.setApiKey(process.env.GOOGLE_API_KEY);
+        Geocode.setApiKey(GOOGLE_API_KEY);      // removing 'process.env' for Netlify deploy
         Geocode.setLanguage('en');
 
         Geocode.fromAddress(anonLocation)
