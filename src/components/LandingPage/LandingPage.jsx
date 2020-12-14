@@ -34,7 +34,7 @@ export function LandingPage(props) {
       and then sent to our backend to populate nearest beaches  ***/ 
     const geocode = (event) => {
         event.preventDefault();
-        Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY);
+        Geocode.setApiKey(process.env.GOOGLE_API_KEY);
         Geocode.setLanguage('en');
 
         Geocode.fromAddress(anonLocation)
