@@ -5,6 +5,10 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../store';
 
+// Importing Styles for Webpack Bundling 
+
+import '../styles/normalize.css';
+import '../styles/index.css';
 
 /***  Components  ***/ 
 
