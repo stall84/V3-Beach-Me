@@ -1,26 +1,42 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+
+var BUILD_DIR = path.resolve(__dirname, 'dist');
+var APP_DIR = path.resolve(__dirname, 'src');
+
+const VENDOR_LIBS = [
+    "react", "react-dom", "redux", "react-redux", "@material-ui/core", "axios", "react-geocode", "react-loader-spinner"
+]
 
 module.exports = {
-    mode: "development",
-    entry: path.resolve(__dirname, 'src'),
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
-        publicPath: '/'
+    entry: {
+        main: APP_DIR + '/index.js',
+        vendor: VENDOR_LIBS
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['*', '.js', '.jsx', '.json'],
+        modules: [ 'node_modules', 'src' ]  
     },
-    devServer: {
-        historyApiFallback: true,
-        hot: true,
-        proxy: {
-            '/api': 'http://localhost:5005'
-        }
-    },
-    watch: true,
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/template.html'
+        }),
+        new MiniCssExtractPlugin(),
+        new CleanWebpackPlugin(),
+        // {
+        //     apply(compiler) {
+        //         compiler.hooks.beforeRun.tapAsync('CustomBeforeRunPlugin', function (compiler, callback) {
+        //             //debugger
+        //             console.dir(compiler.options)
+        //             callback()
+        //         });
+        //     }
+        // },
+    ],
     module: {
         rules: [
             {
@@ -40,14 +56,14 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
                 test: /\.jsx?/,
+                exclude: '/node_modules/',
+                use: {
                 loader: 'babel-loader',  
+                }
             }]
     },
-    plugins: [
-        new Dotenv()
-    ]
 }
