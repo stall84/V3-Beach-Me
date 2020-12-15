@@ -32,21 +32,35 @@ export function ForecastBar (props) {
         )
     }
     return (
+        // Here we're rendering the individual forecast-days with the day of the week, the openweathermaps 
+        // api depiction image, the description, and finally the termperature to F
 
         <div className={styles.forecast_main}>         
             <a href={`${url}${forecasts[props.id].city.id}`}>
             <div className={styles.weather_block}>                            
                 <div className={styles.weather_div}><span className={styles.day_span}>{days[0]}</span>
                     <img src={`https://openweathermap.org/img/wn/${forecasts[props.id].list[8].weather[0].icon}.png`} alt="Wx Icon"/>
-                    <span className={styles.wx_span}>{forecasts[props.id].list[8].weather[0].description}</span>
+                    <div className={styles.btm_wx} >
+                        <span className={styles.wx_span}>{forecasts[props.id].list[8].weather[0].description}</span>
+                        <br/>
+                        <span className={styles.temp_span}>{forecasts[props.id].list[8].main.temp.toFixed(0)}F</span>
+                    </div>
                 </div>               
                 <div className={styles.weather_div}><span className={styles.day_span}>{days[1]}</span>
                     <img src={`https://openweathermap.org/img/wn/${forecasts[props.id].list[16].weather[0].icon}.png`} alt="Wx Icon"/>
-                    <span className={styles.wx_span}>{forecasts[props.id].list[16].weather[0].description}</span>
+                    <div className={styles.btm_wx} >
+                        <span className={styles.wx_span}>{forecasts[props.id].list[16].weather[0].description}</span>
+                        <br/>
+                        <span className={styles.temp_span}>{forecasts[props.id].list[16].main.temp.toFixed(0)}F</span>
+                    </div>
                 </div>
                 <div className={styles.weather_div}><span className={styles.day_span}>{days[2]}</span>
                     <img src={`https://openweathermap.org/img/wn/${forecasts[props.id].list[24].weather[0].icon}.png`} alt="Wx Icon"/>
-                    <span className={styles.wx_span}>{forecasts[props.id].list[24].weather[0].description}</span>
+                    <div className={styles.btm_wx} >
+                        <span className={styles.wx_span}>{forecasts[props.id].list[24].weather[0].description}</span>
+                        <br/>
+                        <span className={styles.temp_span}>{forecasts[props.id].list[24].main.temp.toFixed(0)}F</span>
+                    </div>
                 </div>                
             </div>
             </a>

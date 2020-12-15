@@ -30,7 +30,7 @@ module.exports = {
         new Dotenv(),
         // {
         //     apply(compiler) {
-        //         compiler.hooks.beforeRun.tapAsync('CustomBeforeRunPlugin', function (compiler, callback) {
+        //         compiler.hooks.beforeRun.tapAsync('CustomBeforeRunPlugin', function (compiler, callback) {           // Retained For Debugging
         //             //debugger
         //             console.dir(compiler.options)
         //             callback()

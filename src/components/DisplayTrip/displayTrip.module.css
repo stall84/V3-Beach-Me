@@ -22,6 +22,7 @@
 }
 
 .base_style h5:first-child {
+  height: 80px;
   padding: 0.5rem 2rem;
   margin-top: 0.7rem;
 }
@@ -70,6 +71,7 @@ a:focus {
 
   .base_style h5:first-child,
   .base_style h5:nth-child(2) {
+    height: fit-content;
     font-size: 90%;
     padding: 0.5rem 0.5rem;
   }
@@ -85,7 +87,8 @@ a:focus {
   }
   .base_style h5:first-child,
   .base_style h5:nth-child(2) {
-    font-size: 85%;
+    height: fit-content;
+    font-size: 90%;
     padding: 0.5rem 0.5rem;
   }
 }
@@ -97,9 +100,13 @@ a:focus {
     margin-bottom: 1rem;
   }
 
-  .base_style h5:first-child,
+  .base_style h5:first-child {
+    font-size: 87%;
+    padding: 0.7rem 0.7rem;
+  }
+
   .base_style h5:nth-child(2) {
-    font-size: 75%;
+    font-size: 82%;
     padding: 0.5rem 0.5rem;
   }
 
