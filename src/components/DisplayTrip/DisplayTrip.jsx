@@ -32,8 +32,8 @@ import Grid from '@material-ui/core/Grid';
                 </div>
                 )
         }
-       
-        return (
+       // If 5 closest beaches exist render the following: The Top of the forecast card that includes the beach name, and google calc'd distance, with hyperlinking
+        return (        
                 <div className={styles.card_top} key={props.trip.id}>
                     <a className={styles.anchor_tag} href={`https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${props.trip.name}&travelmode=driving`}>
                         <h5 >{props.trip.name}</h5> 

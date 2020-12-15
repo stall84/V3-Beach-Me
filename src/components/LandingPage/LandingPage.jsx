@@ -53,7 +53,7 @@ export function LandingPage(props) {
                     lng: lng
                 })
                 .then((response) => {
-                    console.log('Post Response from API: ', response);
+                    // console.log('Post Response from API: ', response);           // For Debug Purposes
                     dispatch({ 
                         type: 'ADD_SEARCH_BEACHES',
                         payload: { 
@@ -85,7 +85,7 @@ export function LandingPage(props) {
                         lng: position.coords.longitude
                     })
                     .then((response) => {
-                        console.log('Post Response from API: ', response);
+                        // console.log('Post Response from API: ', response);               // For Debug Purposes
                         dispatch({ 
                             type: 'ADD_SEARCH_BEACHES',
                             payload: { 
@@ -111,7 +111,7 @@ export function LandingPage(props) {
                 searchBeaches: searchBeaches
             })
             .then((response) => {
-                console.log('Response to GET-TRIPS Endpoint: ', response);
+                // console.log('Response to GET-TRIPS Endpoint: ', response);       // For Debug Purposes
                 dispatch({
                     type: 'ADD_BEACHES',
                     payload: {
