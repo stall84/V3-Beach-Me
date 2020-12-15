@@ -30,6 +30,13 @@
   box-shadow: var(--hoverShad);
 }
 
+.btm_wx {
+  display: flex;
+  height: 155px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .day_span {
   color: var(--sadle);
 }
@@ -46,5 +53,23 @@
   .weather_block img {
     width: 55px;
     height: 55px;
+  }
+  .btm_wx {
+    height: 155px;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .btm_wx {
+    height: 155px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .wx_span {
+    font-size: 70%;
+  }
+  .btm_wx {
+    height: 115px;
   }
 }

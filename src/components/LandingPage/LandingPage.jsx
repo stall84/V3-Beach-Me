@@ -40,7 +40,6 @@ export function LandingPage(props) {
         Geocode.fromAddress(anonLocation)
         .then((response) => {
             let { lat, lng } = response.results[0].geometry.location;
-            console.log('Geocoder position: ', lat,lng);
             dispatch({
                 type: 'ADD_COORDS',
                 payload: {
