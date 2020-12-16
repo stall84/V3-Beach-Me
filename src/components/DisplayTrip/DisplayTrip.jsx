@@ -1,3 +1,4 @@
+import { config } from '../../../constants';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -54,11 +55,11 @@ export function DisplayTrip (props) {
     
     useEffect(() => {
         if (beachFive != null) {
-            axios.post('https://mes-personal-site.herokuapp.com/api/v1/get-weather', {
+            axios.post(config.url.API_WEATHER, {
                 fiveBeaches: beachFive
             })
                 .then(response => {
-                    console.log('Weather Response: ', response)
+                    // console.log('Weather Response: ', response)                      // For Debugging Purposes
                     dispatch({
                         type: 'ADD_FORECASTS',
                         payload: {

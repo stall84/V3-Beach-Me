@@ -1,4 +1,5 @@
 /*** Third Party Components/Libraries  ***/
+import { config } from '../../../constants';                    // Import configuration variables for either Dev or Prod
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -48,7 +49,7 @@ export function LandingPage(props) {
                 }
             })
             axios
-                .post('https://mes-personal-site.herokuapp.com/api/v1/beaches', {
+                .post(config.url.API_BEACHES, {
                     lat: lat,
                     lng: lng
                 })
@@ -80,7 +81,7 @@ export function LandingPage(props) {
                         longitude: position.coords.longitude}
                     })
                 axios
-                    .post('https://mes-personal-site.herokuapp.com/api/v1/beaches', {
+                    .post(config.url.API_BEACHES, {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     })
@@ -105,7 +106,7 @@ export function LandingPage(props) {
     useEffect(() => {
         if (longitude && searchBeaches) {
 
-            axios.post('https://mes-personal-site.herokuapp.com/api/v1/get-trips', {
+            axios.post(config.url.API_TRIPS, {
                 reduxLat: latitude,
                 reduxLng: longitude,
                 searchBeaches: searchBeaches
