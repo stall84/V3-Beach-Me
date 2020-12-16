@@ -28,15 +28,15 @@ module.exports = {
         new MiniCssExtractPlugin(),
         new CleanWebpackPlugin(),
         new Dotenv(),
-        // {
-        //     apply(compiler) {
-        //         compiler.hooks.beforeRun.tapAsync('CustomBeforeRunPlugin', function (compiler, callback) {           // Retained For Debugging
-        //             //debugger
-        //             console.dir(compiler.options)
-        //             callback()
-        //         });
-        //     }
-        // },
+        {
+            apply(compiler) {
+                compiler.hooks.beforeRun.tapAsync('CustomBeforeRunPlugin', function (compiler, callback) {           // Retained For Debugging
+                    //debugger
+                    console.dir(compiler.options)
+                    callback()
+                });
+            }
+        },
     ],
     module: {
         rules: [

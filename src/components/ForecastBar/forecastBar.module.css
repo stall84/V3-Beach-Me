@@ -45,6 +45,10 @@
   color: var(--brown-1);
 }
 
+.temp_span {
+  font-size: 105%;
+}
+
 @media only screen and (max-width: 1550px) {
   .forecat_main,
   .weather_block {

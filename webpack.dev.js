@@ -11,7 +11,7 @@ module.exports = merge(common, {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js',
-        publicPath: '/'
+        publicPath: ''
     },
     devServer: {
         historyApiFallback: true,

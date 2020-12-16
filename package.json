@@ -4,7 +4,7 @@
   "description": "redesign of original Beach-Me Front-End ",
   "main": "index.js",
   "scripts": {
-    "devNoServer": "webpack --d --watch",
+    "devNoServer": "webpack -d --config webpack.dev.js",
     "start": "webpack",
     "dev": "webpack-dev-server --config webpack.dev.js",
     "build": "node ./scripts/create_env.js && webpack --config webpack.prod.js"
