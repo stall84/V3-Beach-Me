@@ -36,6 +36,11 @@ label {
   text-align: center;
 }
 
+.inputMessage {
+  color: var(--red1);
+  font-size: 120%;
+}
+
 input {
   text-align: center;
   padding: 0.5rem 2rem;

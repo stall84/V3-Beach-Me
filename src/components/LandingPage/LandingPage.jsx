@@ -20,7 +20,8 @@ import Grid from '@material-ui/core/Grid';
 export function LandingPage(props) {
     
     const [ scrollState, setScrollState ] = useState('logo')
-    const [ anonLocation, setAnonLocation ] = useState(null);
+    const [ anonLocation, setAnonLocation ] = useState('');
+    const [ inputMessage, setInputMessage ] = useState('')
 
     const dispatch = useDispatch();
     const latitude = useSelector((state) => state.latitude);
@@ -32,9 +33,19 @@ export function LandingPage(props) {
     scrollRef.current = scrollState;
     
 /***  Geocode will operate if the client or client's browser refuse automatic location finding.  Lat/Lng will be pulled from the response, added to Redux store
-      and then sent to our backend to populate nearest beaches  ***/ 
+      and then sent to our backend to populate nearest beaches  ***/
+      
     const geocode = (event) => {
         event.preventDefault();
+        
+        // Validate User Anonymous Location input to match either City, ST or 5-digit Zip
+        const regex = /(^[\w\s]+,\s\w{2}$)|(^\d{5}$)/;
+        if (regex.test(anonLocation) == false) {
+            setInputMessage('Please make sure your input matches the format: City, ST like Reno, NV or a 5 digit U.S. ZipCode like 89501');
+            setAnonLocation('');
+            return;
+        }
+        
         Geocode.setApiKey(process.env.GOOGLE_API_KEY);
         Geocode.setLanguage('en');
 
@@ -48,6 +59,8 @@ export function LandingPage(props) {
                     longitude: lng
                 }
             })
+            setInputMessage('');        // Clear State
+            setAnonLocation('');        // Clear State
             axios
                 .post(config.url.API_BEACHES, {
                     lat: lat,
@@ -73,7 +86,6 @@ export function LandingPage(props) {
     useEffect(() => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                console.log('Navigator position: ', position);
                 dispatch({
                     type: 'ADD_COORDS', 
                     payload: {
@@ -157,6 +169,11 @@ export function LandingPage(props) {
        }
     }, [])
 
+    const handleInput = inputAddy => {
+        setAnonLocation(inputAddy);
+
+    };
+
 
     return (
 
@@ -171,12 +188,17 @@ export function LandingPage(props) {
                     </header>
                 </div>
                 <Grid item xs={12} className={styles.input_div}>
+                    <div className={styles.inputMessage}>
+                            {inputMessage}
+                    </div>
                     <form onSubmit={geocode} >
                       <label htmlFor='location'>Where are you?</label>
+                        
                       <input type='search'
                              id='location' 
+                             value={anonLocation}
                              placeholder='ex: Atlanta, GA or 30306' 
-                             onChange={input => setAnonLocation(input.target.value)} />
+                             onChange={input => handleInput(input.target.value)} />
                     </form>
                     <div>
                         <p>After your location is attained, The 5 closest beaches to you will be rendered below.<br/>

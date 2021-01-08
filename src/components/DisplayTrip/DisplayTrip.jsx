@@ -27,7 +27,7 @@ import Grid from '@material-ui/core/Grid';
                         color="#00BFFF"
                         height={120}
                         width={120}
-                        timeout={4000}                
+                        timeout={3250}                
                     />
                     
                 </div>
@@ -85,7 +85,7 @@ export function DisplayTrip (props) {
                     color="#001858"
                     height={200}
                     width={200}
-                    timeout={4000}                
+                    timeout={2750}                
                 />
                 <h5>Enter Your Location Above</h5>
             </div>
