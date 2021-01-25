@@ -1,0 +1,23 @@
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+  bottom: 0;
+  text-align: center;
+}
+.footer h5 {
+  color: var(--blue-2);
+  text-shadow: 0.5px 0.5px 0px var(--blue-1);
+}
+.footer h5:hover {
+  color: var(--red1);
+  transition: 200ms ease-in-out;
+}
+
+@media only screen and (max-width: 500px) {
+  .footer h5 {
+    font-size: var(--small);
+  }
+}

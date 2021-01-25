@@ -1,0 +1,43 @@
+.grid_base {
+  height: 240px;
+  max-height: min-content;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 1.75rem;
+  text-align: center;
+}
+
+.grid_base h4 {
+  color: var(--mauve-1);
+  text-shadow: 0.5px 0.5px 0px var(--blue-1);
+}
+
+.info_help {
+  display: flex;
+  height: 300px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 1.75rem;
+  text-align: center;
+}
+
+.card {
+  padding: 1rem;
+}
+
+@media only screen and (max-width: 500px) {
+  .grid_base {
+    height: 180px;
+  }
+  .grid_base h4 {
+    font-size: var(--small);
+  }
+  .info_help {
+    height: 420px;
+  }
+  .info_help h5 {
+    font-size: var(--small);
+  }
+}
