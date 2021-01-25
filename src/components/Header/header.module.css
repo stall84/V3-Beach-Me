@@ -1,7 +1,7 @@
 .hero {
   background-image: url("../../images/anim_beach_1900.jpg");
   background-size: cover;
-  height: 66vh;
+  height: 60vh;
   width: 100vw;
   background-position: center;
 }
