@@ -8,7 +8,10 @@ import Geocode from 'react-geocode';
 
 /***  Beach-Me Style and Custom Components ***/
 import styles from './landingPage.module.css';
+import { Header } from '../Header/Header';
 import { DisplayTrip } from '../DisplayTrip/DisplayTrip';
+import { Footer } from '../Footer/Footer';
+
 
 
 /***  Material UI Components ***/ 
@@ -19,7 +22,7 @@ import Grid from '@material-ui/core/Grid';
 
 export function LandingPage(props) {
     
-    const [ scrollState, setScrollState ] = useState('logo')
+    // const [ scrollState, setScrollState ] = useState('logo')
     const [ anonLocation, setAnonLocation ] = useState('');
     const [ inputMessage, setInputMessage ] = useState('')
 
@@ -29,8 +32,8 @@ export function LandingPage(props) {
     const searchBeaches = useSelector((state) => state.searchBeaches);
     
 
-    const scrollRef = React.useRef();
-    scrollRef.current = scrollState;
+    // const scrollRef = React.useRef();
+    // scrollRef.current = scrollState;
     
 /***  Geocode will operate if the client or client's browser refuse automatic location finding.  Lat/Lng will be pulled from the response, added to Redux store
       and then sent to our backend to populate nearest beaches  ***/
@@ -152,22 +155,22 @@ export function LandingPage(props) {
     }, [today])
     
     //  Logo animation 
-    useEffect(() => {
-       const handleScroll = () => {
-           const show = window.scrollY > 2;
-           if (show) {
-               setScrollState('scrolling');
+    // useEffect(() => {
+    //    const handleScroll = () => {
+    //        const show = window.scrollY > 2;
+    //        if (show) {
+    //            setScrollState('scrolling');
                
-           } else {
-               setScrollState('logo');
-           }
-       }
-       document.addEventListener('scroll', handleScroll)
+    //        } else {
+    //            setScrollState('logo');
+    //        }
+    //    }
+    //    document.addEventListener('scroll', handleScroll)
        
-       return () => {
-           document.removeEventListener('scroll', handleScroll)
-       }
-    }, [])
+    //    return () => {
+    //        document.removeEventListener('scroll', handleScroll)
+    //    }
+    // }, [])
 
     const handleInput = inputAddy => {
         setAnonLocation(inputAddy);
@@ -180,13 +183,14 @@ export function LandingPage(props) {
     <React.Fragment>
         <Container maxWidth='xl' disableGutters={true} >
             <Grid container >
-                <div className={styles.hero}>
+                <Header />
+                {/* <div className={styles.hero}>
                     <header className={styles[scrollRef.current]}>
                         <a href="#">
                             <h1 >BEACH ME </h1>
                         </a>
                     </header>
-                </div>
+                </div> */}
                 <Grid item xs={12} className={styles.input_div}>
                     <div className={styles.inputMessage}>
                             {inputMessage}
@@ -211,13 +215,14 @@ export function LandingPage(props) {
                         <DisplayTrip />                                
                 </Grid>
         </Grid>
-        <footer className={styles.footer}>
+        <Footer />
+        {/* <footer className={styles.footer}>
         <div>
             <a target='_blank' href='https://github.com/stall84'>
                 <h5>&copy; 2020 Michael Stallings</h5>
             </a>
         </div>
-        </footer>
+        </footer> */}
         </Container>
     </React.Fragment>
     )

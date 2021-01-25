@@ -9,7 +9,7 @@ const { webpack } = require('webpack');
 var APP_DIR = path.resolve(__dirname, 'src');
 
 const VENDOR_LIBS = [
-    "react", "react-dom", "redux", "react-redux", "@material-ui/core", "axios", "react-geocode", "react-loader-spinner"
+    "react", "react-dom", "react-router-dom", "redux", "react-redux", "@material-ui/core", "axios", "react-geocode", "react-loader-spinner"
 ]
 
 module.exports = {
