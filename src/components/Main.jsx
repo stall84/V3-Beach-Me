@@ -19,6 +19,7 @@ import '../styles/index.css';
 
 import { LandingPage } from './LandingPage/LandingPage';
 import { MobileApp } from './MobileApp/MobileApp';
+import { PrivacyPolicy } from './PrivacyPolicy/PrivacyPolicy';
 
 
 export const Main = () => (
@@ -27,6 +28,9 @@ export const Main = () => (
                         <Switch>
                         <Route path='/mobile-app'>
                           <MobileApp />
+                        </Route>
+                        <Route path='/privacy'>
+                          <PrivacyPolicy />
                         </Route>        
                         <Route path='/'>
                           <LandingPage /> 

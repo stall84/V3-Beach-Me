@@ -27,6 +27,17 @@
   padding: 1rem;
 }
 
+.privacy_link {
+  padding: 2rem 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.privacy_link h5 {
+  border: 0.5px solid var(--red1);
+  padding: 0.6rem;
+}
+
 @media only screen and (max-width: 500px) {
   .grid_base {
     height: 180px;

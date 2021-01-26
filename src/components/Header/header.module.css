@@ -23,7 +23,7 @@
 
   padding-left: 1.33rem;
   position: fixed;
-  color: rgba(192, 252, 249, 0.15);
+  color: rgba(169, 247, 243, 0.55);
   text-shadow: var(--logoShad-2);
   transition: all 0.6s ease-out;
 }
