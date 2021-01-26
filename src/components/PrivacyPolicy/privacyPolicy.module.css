@@ -1,0 +1,17 @@
+.grid_base {
+  height: max-content;
+  max-height: min-content;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 1.75rem;
+  text-align: center;
+}
+.policy_section {
+  padding: 1rem;
+}
+
+.privacy_card {
+  padding: 1rem;
+}

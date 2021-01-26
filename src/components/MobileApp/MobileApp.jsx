@@ -37,10 +37,14 @@ export function MobileApp() {
                             or unexpected behavior while running the mobile-app, 
                             please send an email with details of problem to: <a href='mailto:beach-me@mail.com'>beach-me@mail.com</a>. 
                             And a representative will respond as soon as possible.
-
                         </h5>
                     </Card>
                 </Grid>
+                <div className={styles.privacy_link}>
+                    <Link to='/privacy'>
+                        <h5>Our Privacy Policy</h5>
+                    </Link>
+                </div>
                 
             </Grid>
             <Footer />
